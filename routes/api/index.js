@@ -15,15 +15,14 @@ router.get("/customers/:email", function(req, res, next) {
       res.json({
         messages: [
           {
-            text: "Sorry, Email Not Found"
+            text: "Sorry, Email Not Found in our database, please check again"
           }
         ],
         actions: [
           {
             type: "set_variable",
             data: {
-              userName: "Digi Demo",
-              userPhone: "+123456789"
+              activeServices: "null"
             }
           }
         ]
@@ -51,6 +50,22 @@ router.get("/customers/:email", function(req, res, next) {
           }
         ]
       });
+    } else {
+      res.json({
+        messages: [
+          {
+            text: "Sorry, Email Not Found in our database, please check again"
+          }
+        ],
+        actions: [
+          {
+            type: "set_variable",
+            data: {
+              activeServices: "null"
+            }
+          }
+        ]
+      });
     }
   });
 });
@@ -71,7 +86,7 @@ router.post("/customers/new", function(req, res, next) {
             res.json({
               status: 200,
               success: true,
-              message: "✅New Customer Added`",
+              message: "✅New Customer Added",
               createdCategory: createdCustomer
             });
           }
