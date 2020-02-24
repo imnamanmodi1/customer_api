@@ -45,7 +45,7 @@ router.get("/customers/:email", function(req, res, next) {
           {
             text:
               "✅ Email Verified Successfully, please choose an appropriate product/service type for your support query",
-            buttons: [
+            quick_replies: [
               {
                 title: totalServices > 1 ? arrServices[0] : arrServices,
                 value: totalServices > 1 ? arrServices[0] : arrServices
