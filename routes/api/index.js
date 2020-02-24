@@ -72,7 +72,7 @@ router.get("/customers/:email", function(req, res, next) {
               activeServices: customerData.activeServices,
               website: customerData.website,
               firstNameApi: customerData.firstName,
-              lastNameApi: customersData.lastName
+              lastNameApi: customerData.lastName
             }
           }
         ]
