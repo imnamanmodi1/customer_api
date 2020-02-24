@@ -40,35 +40,39 @@ router.get("/customers/:email", function(req, res, next) {
         arrServices = allServices;
       }
       res.json({
-        text: "✅ Email Verified Successfully",
-        buttons: [
+        messages: [
           {
-            title: totalServices > 1 ? arrServices[0] : arrServices,
-            value: totalServices > 1 ? arrServices[0] : arrServices,
-            payload: {
-              goToBlock: "sbaa42403-9fb9-4c2a-a033-0a0afb892816"
-            }
-          },
-          {
-            title: totalServices >= 2 ? arrServices[1] : noData,
-            value: totalServices >= 2 ? arrServices[1] : noData,
-            payload: {
-              goToBlock: "sbaa42403-9fb9-4c2a-a033-0a0afb892816"
-            }
-          },
-          {
-            title: totalServices >= 3 ? arrServices[2] : noData,
-            value: totalServices >= 3 ? arrServices[2] : noData,
-            payload: {
-              goToBlock: "sbaa42403-9fb9-4c2a-a033-0a0afb892816"
-            }
-          },
-          {
-            title: totalServices >= 4 ? arrServices[3] : noData,
-            value: totalServices >= 4 ? arrServices[3] : noData,
-            payload: {
-              goToBlock: "sbaa42403-9fb9-4c2a-a033-0a0afb892816"
-            }
+            text: "✅ Email Verified Successfully",
+            buttons: [
+              {
+                title: totalServices > 1 ? arrServices[0] : arrServices,
+                value: totalServices > 1 ? arrServices[0] : arrServices,
+                payload: {
+                  goToBlock: "sbaa42403-9fb9-4c2a-a033-0a0afb892816"
+                }
+              },
+              {
+                title: totalServices >= 2 ? arrServices[1] : noData,
+                value: totalServices >= 2 ? arrServices[1] : noData,
+                payload: {
+                  goToBlock: "sbaa42403-9fb9-4c2a-a033-0a0afb892816"
+                }
+              },
+              {
+                title: totalServices >= 3 ? arrServices[2] : noData,
+                value: totalServices >= 3 ? arrServices[2] : noData,
+                payload: {
+                  goToBlock: "sbaa42403-9fb9-4c2a-a033-0a0afb892816"
+                }
+              },
+              {
+                title: totalServices >= 4 ? arrServices[3] : noData,
+                value: totalServices >= 4 ? arrServices[3] : noData,
+                payload: {
+                  goToBlock: "sbaa42403-9fb9-4c2a-a033-0a0afb892816"
+                }
+              }
+            ]
           }
         ],
         actions: [
