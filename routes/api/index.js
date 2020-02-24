@@ -33,7 +33,8 @@ router.get("/customers/:email", function(req, res, next) {
     if (customerData) {
       var noData = "NA";
       var allServices = customerData.activeServices;
-      var arrServices = allServices.split(",") || allServices.split("\n");
+      var arrServices = allServices.replace(/\n/g, ",").split(",");
+
       console.log(arrServices, "test");
       var totalServices = arrServices.length;
       if (totalServices <= 1) {
