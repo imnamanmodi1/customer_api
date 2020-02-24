@@ -48,40 +48,19 @@ router.get("/customers/:email", function(req, res, next) {
             buttons: [
               {
                 title: totalServices > 1 ? arrServices[0] : arrServices,
-                value: totalServices > 1 ? arrServices[0] : arrServices,
-                payload: {
-                  goToBlock: "sfac29e94-6029-45b9-97c3-173f079505bb"
-                }
+                value: totalServices > 1 ? arrServices[0] : arrServices
               },
               {
                 title: totalServices >= 2 ? arrServices[1] : noData,
-                value: totalServices >= 2 ? arrServices[1] : noData,
-                payload: {
-                  goToBlock:
-                    totalServices >= 2
-                      ? "sfac29e94-6029-45b9-97c3-173f079505bb"
-                      : noData
-                }
+                value: totalServices >= 2 ? arrServices[1] : noData
               },
               {
                 title: totalServices >= 3 ? arrServices[2] : noData,
-                value: totalServices >= 3 ? arrServices[2] : noData,
-                payload: {
-                  goToBlock:
-                    totalServices >= 3
-                      ? "sfac29e94-6029-45b9-97c3-173f079505bb"
-                      : noData
-                }
+                value: totalServices >= 3 ? arrServices[2] : noData
               },
               {
                 title: totalServices >= 4 ? arrServices[3] : noData,
-                value: totalServices >= 4 ? arrServices[3] : noData,
-                payload: {
-                  goToBlock:
-                    totalServices >= 4
-                      ? "sfac29e94-6029-45b9-97c3-173f079505bb"
-                      : noData
-                }
+                value: totalServices >= 4 ? arrServices[3] : noData
               }
             ]
           }
