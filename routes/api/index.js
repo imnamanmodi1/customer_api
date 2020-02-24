@@ -56,7 +56,10 @@ router.get("/customers/:email", function(req, res, next) {
                 title: totalServices >= 2 ? arrServices[1] : noData,
                 value: totalServices >= 2 ? arrServices[1] : noData,
                 payload: {
-                  goToBlock: "sfac29e94-6029-45b9-97c3-173f079505bb"
+                  goToBlock:
+                    totalServices >= 2
+                      ? "sfac29e94-6029-45b9-97c3-173f079505bb"
+                      : noData
                 }
               },
               {
@@ -74,7 +77,7 @@ router.get("/customers/:email", function(req, res, next) {
                 value: totalServices >= 4 ? arrServices[3] : noData,
                 payload: {
                   goToBlock:
-                    totalServices >= 3
+                    totalServices >= 4
                       ? "sfac29e94-6029-45b9-97c3-173f079505bb"
                       : noData
                 }
