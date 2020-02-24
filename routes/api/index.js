@@ -40,13 +40,13 @@ router.get("/customers/:email", function(req, res, next) {
         arrServices = allServices;
       }
       res.json({
-        messages: [
-          {
-            text: "✅ Email Verified Successfully"
-          }
-        ],
+        // messages: [
+        //   {
+        //     text: "✅ Email Verified Successfully"
+        //   }
+        // ],
         text: "Please choose the service for which you are seeking support",
-        quick_replies: [
+        buttons: [
           {
             title: totalServices > 1 ? arrServices[0] : arrServices,
             value: totalServices > 1 ? arrServices[0] : arrServices,
