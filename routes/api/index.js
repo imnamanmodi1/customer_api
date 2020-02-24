@@ -42,7 +42,8 @@ router.get("/customers/:email", function(req, res, next) {
       res.json({
         messages: [
           {
-            text: "✅ Email Verified Successfully",
+            text:
+              "✅ Email Verified Successfully, please choose an appropriate product/service type for your support query",
             buttons: [
               {
                 title: totalServices > 1 ? arrServices[0] : arrServices,
