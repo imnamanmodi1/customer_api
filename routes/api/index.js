@@ -70,7 +70,9 @@ router.get("/customers/:email", function(req, res, next) {
             type: "set_variable",
             data: {
               activeServices: customerData.activeServices,
-              website: customerData.website
+              website: customerData.website,
+              firstNameApi: customerData.firstName,
+              lastNameApi: customersData.lastName
             }
           }
         ]
