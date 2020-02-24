@@ -23,7 +23,8 @@ router.get("/customers/:email", function(req, res, next) {
           {
             type: "set_variable",
             data: {
-              activeServices: "null"
+              activeServices: "null",
+              website: "null"
             }
           }
         ]
@@ -49,28 +50,28 @@ router.get("/customers/:email", function(req, res, next) {
             title: totalServices > 1 ? arrServices[0] : arrServices,
             value: totalServices > 1 ? arrServices[0] : arrServices,
             payload: {
-              goToBlock: "sede84199-f04a-4058-8b8c-fbb4364bb8"
+              goToBlock: "sbaa42403-9fb9-4c2a-a033-0a0afb892816"
             }
           },
           {
             title: totalServices >= 2 ? arrServices[1] : noData,
             value: totalServices >= 2 ? arrServices[1] : noData,
             payload: {
-              goToBlock: "sede84199-f04a-4058-8b8c-fbb4364bb8"
+              goToBlock: "sbaa42403-9fb9-4c2a-a033-0a0afb892816"
             }
           },
           {
             title: totalServices >= 3 ? arrServices[2] : noData,
             value: totalServices >= 3 ? arrServices[2] : noData,
             payload: {
-              goToBlock: "sede84199-f04a-4058-8b8c-fbb4364bb8"
+              goToBlock: "sbaa42403-9fb9-4c2a-a033-0a0afb892816"
             }
           },
           {
             title: totalServices >= 4 ? arrServices[3] : noData,
             value: totalServices >= 4 ? arrServices[3] : noData,
             payload: {
-              goToBlock: "sede84199-f04a-4058-8b8c-fbb4364bb8"
+              goToBlock: "sbaa42403-9fb9-4c2a-a033-0a0afb892816"
             }
           }
         ],
@@ -96,7 +97,8 @@ router.get("/customers/:email", function(req, res, next) {
           {
             type: "set_variable",
             data: {
-              activeServices: "null"
+              activeServices: "null",
+              website: "null"
             }
           }
         ]
