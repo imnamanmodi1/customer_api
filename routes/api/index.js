@@ -15,7 +15,8 @@ router.get("/customers/:email", function(req, res, next) {
       res.json({
         messages: [
           {
-            text: "Sorry, Email Not Found in our database, please check again"
+            text:
+              "Sorry email not found, please make sure you are entering your registered email id."
           }
         ],
         actions: [
@@ -29,23 +30,56 @@ router.get("/customers/:email", function(req, res, next) {
       });
     }
     if (customerData) {
-      // var servicesArr = customerData.activeServices;
-      // var lengthOfServices = servicesArr.length;
-      // var formattedServices;
-      // for (i = 0; i < lengthOfServices + 1; i++) {
-      //   formattedServices += servicesArr[i];
-      // }
+      var noData = "NA";
+      var allServices = customerData.activeServices;
+      var arrServices = allServices.split(",");
+      console.log(arrServices, "test");
+      var totalServices = arrServices.length;
+      if (totalServices <= 1) {
+        arrServices = allServices;
+      }
       res.json({
         messages: [
           {
-            text: "Great, Email found"
+            text: "✅ Email Verified Successfully"
+          }
+        ],
+        quick_replies: [
+          {
+            title: totalServices > 1 ? arrServices[0] : arrServices,
+            value: totalServices > 1 ? arrServices[0] : arrServices,
+            payload: {
+              goToBlock: "sede84199-f04a-4058-8b8c-fbb4364bb8"
+            }
+          },
+          {
+            title: totalServices >= 2 ? arrServices[1] : noData,
+            value: totalServices >= 2 ? arrServices[1] : noData,
+            payload: {
+              goToBlock: "sede84199-f04a-4058-8b8c-fbb4364bb8"
+            }
+          },
+          {
+            title: totalServices >= 3 ? arrServices[2] : noData,
+            value: totalServices >= 3 ? arrServices[2] : noData,
+            payload: {
+              goToBlock: "sede84199-f04a-4058-8b8c-fbb4364bb8"
+            }
+          },
+          {
+            title: totalServices >= 4 ? arrServices[3] : noData,
+            value: totalServices >= 4 ? arrServices[3] : noData,
+            payload: {
+              goToBlock: "sede84199-f04a-4058-8b8c-fbb4364bb8"
+            }
           }
         ],
         actions: [
           {
             type: "set_variable",
             data: {
-              activeServices: customerData.activeServices
+              activeServices: customerData.activeServices,
+              website: customerData.website
             }
           }
         ]
@@ -54,7 +88,8 @@ router.get("/customers/:email", function(req, res, next) {
       res.json({
         messages: [
           {
-            text: "Sorry, Email Not Found in our database, please check again"
+            text:
+              "❌ Email verification failed. Error: Provided email is not registered in our database, retry with correct email id"
           }
         ],
         actions: [
@@ -70,6 +105,7 @@ router.get("/customers/:email", function(req, res, next) {
   });
 });
 
+// adds a new customer to db
 router.post("/customers/new", function(req, res, next) {
   // finding if a customer exists already
   Customer.findOne({ email: req.body.email }, (err, customerData) => {
@@ -101,5 +137,7 @@ router.post("/customers/new", function(req, res, next) {
     }
   });
 });
+
+// Updates an existing customer -- PUT
 
 module.exports = router;
