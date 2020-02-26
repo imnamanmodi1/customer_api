@@ -82,7 +82,14 @@ router.get("/customers/:email", function(req, res, next) {
         messages: [
           {
             text:
-              "❌ Email verification failed. Error: Provided email is not registered in our database, retry with correct email id"
+              "❌ Email verification failed. \n Error: To connect with a support agent, please update your registered email id so that we can pull your information from our database.",
+            quick_replies: [
+              {
+                title: "Retry Verification",
+                value: "Retry Verification",
+                goToBlock: "s6fba3e4b-2040-4089-9aa7-fbb1c9d669ad"
+              }
+            ]
           }
         ],
         actions: [
@@ -90,7 +97,9 @@ router.get("/customers/:email", function(req, res, next) {
             type: "set_variable",
             data: {
               activeServices: "null",
-              website: "null"
+              website: "null",
+              firstNameApi: "null",
+              lastNameApi: "null"
             }
           }
         ]
