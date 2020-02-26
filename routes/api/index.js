@@ -16,7 +16,16 @@ router.get("/customers/:email", function(req, res, next) {
         messages: [
           {
             text:
-              "Sorry email not found, please make sure you are entering your registered email id."
+              "❌ Email verification failed. \n Error: To connect with a support agent, please update your registered email id so that we can pull your information from our database.",
+            quick_replies: [
+              {
+                title: "Retry Verification",
+                value: "Retry Verification",
+                payload: {
+                  goToBlock: "s6fba3e4b-2040-4089-9aa7-fbb1c9d669ad"
+                }
+              }
+            ]
           }
         ],
         actions: [
@@ -24,7 +33,9 @@ router.get("/customers/:email", function(req, res, next) {
             type: "set_variable",
             data: {
               activeServices: "null",
-              website: "null"
+              website: "null",
+              firstNameApi: "null",
+              lastNameApi: "null"
             }
           }
         ]
@@ -87,7 +98,9 @@ router.get("/customers/:email", function(req, res, next) {
               {
                 title: "Retry Verification",
                 value: "Retry Verification",
-                goToBlock: "s6fba3e4b-2040-4089-9aa7-fbb1c9d669ad"
+                payload: {
+                  goToBlock: "s6fba3e4b-2040-4089-9aa7-fbb1c9d669ad"
+                }
               }
             ]
           }
