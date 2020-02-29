@@ -241,7 +241,8 @@ router.get("/marcos/customer/:id", function(req, res, next) {
         res.json({
           messages: [
             {
-              text: "✅ Customer ID Verified, \n Enter any text"
+              text:
+                "✅ Customer ID Verified, \n Leider kann ich Dich anhand dieser ID nicht in meiner Kunden- / Partnerliste finden. Entweder Du versuchst es noch einmal, oder Du holst Dir einfach den Zugang zum VIP Club zum regulären Preis, der noch immer hammer günstig ist! Wir sehen uns auf der anderen Seite!"
             }
           ],
           actions: [
