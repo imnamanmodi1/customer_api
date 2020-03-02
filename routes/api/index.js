@@ -186,7 +186,7 @@ router.post("/marcos/customer/new", function(req, res, next) {
               res.json({
                 status: 200,
                 success: true,
-                message: "✅New Customer Added",
+                message: "✅ New Customer Added",
                 createdCustomer: createdCustomer
               });
             }
@@ -196,7 +196,7 @@ router.post("/marcos/customer/new", function(req, res, next) {
         res.json({
           status: 500,
           success: false,
-          message: "❌Customer Already Exists"
+          message: "❌ Customer Already Exists"
         });
       }
     }
@@ -215,16 +215,7 @@ router.get("/marcos/customer/:id", function(req, res, next) {
         res.json({
           messages: [
             {
-              text: "❌ Error Message for Customer Not Found.",
-              quick_replies: [
-                {
-                  title: "Error Title",
-                  value: "Error Value",
-                  payload: {
-                    goToBlock: "s6fba3e4b-2040-4089-9aa7-fbb1c9d669ad"
-                  }
-                }
-              ]
+              text: "❌ ID nicht gefunden :("
             }
           ],
           actions: [
@@ -241,8 +232,7 @@ router.get("/marcos/customer/:id", function(req, res, next) {
         res.json({
           messages: [
             {
-              text:
-                "✅ Customer ID Verified, \n Leider kann ich Dich anhand dieser ID nicht in meiner Kunden- / Partnerliste finden. Entweder Du versuchst es noch einmal, oder Du holst Dir einfach den Zugang zum VIP Club zum regulären Preis, der noch immer hammer günstig ist! Wir sehen uns auf der anderen Seite!"
+              text: "✅ ID erfolgreich bestätigt!"
             }
           ],
           actions: [
@@ -258,16 +248,7 @@ router.get("/marcos/customer/:id", function(req, res, next) {
         res.json({
           messages: [
             {
-              text: "❌ Error Message for Customer Not Found.",
-              quick_replies: [
-                {
-                  title: "Error Titles",
-                  value: "Error Value",
-                  payload: {
-                    goToBlock: "s6fba3e4b-2040-4089-9aa7-fbb1c9d669ad"
-                  }
-                }
-              ]
+              text: "❌ ID nicht gefunden :("
             }
           ],
           actions: [
