@@ -8,12 +8,12 @@ var Customer = require("../../models/customer.js");
 var MarcosCustomer = require("../../models/marcosCustomer.js");
 
 /* GET home page. */
-router.get("/", function(req, res, next) {
+router.get("/", function (req, res, next) {
   res.json({ success: true, message: "Welcome to Digitaliz's Customer API" });
 });
 
 // retrieves customer of Digitaliz
-router.get("/customers/:email", function(req, res, next) {
+router.get("/customers/:email", function (req, res, next) {
   var email = req.params.email;
   Customer.findOne({ email: email }, (err, customerData) => {
     if (err) {
@@ -27,11 +27,11 @@ router.get("/customers/:email", function(req, res, next) {
                 title: "Retry Verification",
                 value: "Retry Verification",
                 payload: {
-                  goToBlock: "s6fba3e4b-2040-4089-9aa7-fbb1c9d669ad"
-                }
-              }
-            ]
-          }
+                  goToBlock: "s6fba3e4b-2040-4089-9aa7-fbb1c9d669ad",
+                },
+              },
+            ],
+          },
         ],
         actions: [
           {
@@ -40,10 +40,10 @@ router.get("/customers/:email", function(req, res, next) {
               activeServices: "null",
               website: "null",
               firstNameApi: "null",
-              lastNameApi: "null"
-            }
-          }
-        ]
+              lastNameApi: "null",
+            },
+          },
+        ],
       });
     }
     if (customerData) {
@@ -64,22 +64,22 @@ router.get("/customers/:email", function(req, res, next) {
             quick_replies: [
               {
                 title: totalServices > 1 ? arrServices[0] : arrServices,
-                value: totalServices > 1 ? arrServices[0] : arrServices
+                value: totalServices > 1 ? arrServices[0] : arrServices,
               },
               {
                 title: totalServices >= 2 ? arrServices[1] : noData,
-                value: totalServices >= 2 ? arrServices[1] : noData
+                value: totalServices >= 2 ? arrServices[1] : noData,
               },
               {
                 title: totalServices >= 3 ? arrServices[2] : noData,
-                value: totalServices >= 3 ? arrServices[2] : noData
+                value: totalServices >= 3 ? arrServices[2] : noData,
               },
               {
                 title: totalServices >= 4 ? arrServices[3] : noData,
-                value: totalServices >= 4 ? arrServices[3] : noData
-              }
-            ]
-          }
+                value: totalServices >= 4 ? arrServices[3] : noData,
+              },
+            ],
+          },
         ],
         actions: [
           {
@@ -88,10 +88,10 @@ router.get("/customers/:email", function(req, res, next) {
               activeServices: customerData.activeServices,
               website: customerData.website,
               firstNameApi: customerData.firstName,
-              lastNameApi: customerData.lastName
-            }
-          }
-        ]
+              lastNameApi: customerData.lastName,
+            },
+          },
+        ],
       });
     } else {
       res.json({
@@ -104,11 +104,11 @@ router.get("/customers/:email", function(req, res, next) {
                 title: "Retry Verification",
                 value: "Retry Verification",
                 payload: {
-                  goToBlock: "s6fba3e4b-2040-4089-9aa7-fbb1c9d669ad"
-                }
-              }
-            ]
-          }
+                  goToBlock: "s6fba3e4b-2040-4089-9aa7-fbb1c9d669ad",
+                },
+              },
+            ],
+          },
         ],
         actions: [
           {
@@ -117,17 +117,17 @@ router.get("/customers/:email", function(req, res, next) {
               activeServices: "null",
               website: "null",
               firstNameApi: "null",
-              lastNameApi: "null"
-            }
-          }
-        ]
+              lastNameApi: "null",
+            },
+          },
+        ],
       });
     }
   });
 });
 
 // adds a new customer to db
-router.post("/customers/new", function(req, res, next) {
+router.post("/customers/new", function (req, res, next) {
   // finding if a customer exists already
   Customer.findOne({ email: req.body.email }, (err, customerData) => {
     console.log(customerData, "customer");
@@ -135,7 +135,7 @@ router.post("/customers/new", function(req, res, next) {
       // creating a new category
       Customer.create(
         {
-          ...req.body
+          ...req.body,
         },
         (err, createdCustomer) => {
           if (err) return next(err);
@@ -144,7 +144,7 @@ router.post("/customers/new", function(req, res, next) {
               status: 200,
               success: true,
               message: "✅New Customer Added",
-              createdCategory: createdCustomer
+              createdCategory: createdCustomer,
             });
           }
         }
@@ -153,7 +153,7 @@ router.post("/customers/new", function(req, res, next) {
       res.json({
         status: 500,
         success: false,
-        message: "❌Customer Already Exists"
+        message: "❌Customer Already Exists",
       });
     }
   });
@@ -168,7 +168,7 @@ router.post("/customers/new", function(req, res, next) {
 // 4. Retrieves all customerID's - GET - /marcos/customer/all
 
 // adds a new CustomerId to db
-router.post("/marcos/customer/new", function(req, res, next) {
+router.post("/marcos/customer/new", function (req, res, next) {
   // finding if a customer exists already
   MarcosCustomer.findOne(
     { customerId: req.body.customerId },
@@ -178,7 +178,7 @@ router.post("/marcos/customer/new", function(req, res, next) {
         // creating a new customer
         MarcosCustomer.create(
           {
-            ...req.body
+            ...req.body,
           },
           (err, createdCustomer) => {
             if (err) return next(err);
@@ -187,7 +187,7 @@ router.post("/marcos/customer/new", function(req, res, next) {
                 status: 200,
                 success: true,
                 message: "✅ New Customer Added",
-                createdCustomer: createdCustomer
+                createdCustomer: createdCustomer,
               });
             }
           }
@@ -196,7 +196,7 @@ router.post("/marcos/customer/new", function(req, res, next) {
         res.json({
           status: 500,
           success: false,
-          message: "❌ Customer Already Exists"
+          message: "❌ Customer Already Exists",
         });
       }
     }
@@ -204,7 +204,7 @@ router.post("/marcos/customer/new", function(req, res, next) {
 });
 
 // Retrieve a Customer by ID - GET - /marcos/customer/:id
-router.get("/marcos/customer/:id", function(req, res, next) {
+router.get("/marcos/customer/:id", function (req, res, next) {
   var customerIdInBody = req.params.id;
   console.log(customerIdInBody, "hey");
   MarcosCustomer.findOne(
@@ -215,50 +215,50 @@ router.get("/marcos/customer/:id", function(req, res, next) {
         res.json({
           messages: [
             {
-              text: "❌ ID nicht gefunden :("
-            }
+              text: "❌ ID nicht gefunden :(",
+            },
           ],
           actions: [
             {
               type: "set_variable",
               data: {
-                existingCustomer: "no"
-              }
-            }
-          ]
+                existingCustomer: "no",
+              },
+            },
+          ],
         });
       }
       if (customersData) {
         res.json({
           messages: [
             {
-              text: "✅ ID erfolgreich bestätigt!"
-            }
+              text: "✅ ID erfolgreich bestätigt!",
+            },
           ],
           actions: [
             {
               type: "set_variable",
               data: {
-                existingCustomer: "yes"
-              }
-            }
-          ]
+                existingCustomer: "yes",
+              },
+            },
+          ],
         });
       } else {
         res.json({
           messages: [
             {
-              text: "❌ ID nicht gefunden :("
-            }
+              text: "❌ ID nicht gefunden :(",
+            },
           ],
           actions: [
             {
               type: "set_variable",
               data: {
-                existingCustomer: "no"
-              }
-            }
-          ]
+                existingCustomer: "no",
+              },
+            },
+          ],
         });
       }
     }
@@ -280,14 +280,14 @@ router.delete("/marcos/customer/delete/:id", (req, res, next) => {
           status: 200,
           success: true,
           message: "✅MARCO's CUSTOMER DELETED SUCCESSFULLY",
-          description: deletedCustomer
+          description: deletedCustomer,
         });
       } else {
         res.json({
           status: 400,
           success: false,
           message: "❌SOMETHING WENT WRONG, CANNOT DELETE CUSTOMER's DATA",
-          error: { ...err }
+          error: { ...err },
         });
       }
     }
@@ -296,11 +296,15 @@ router.delete("/marcos/customer/delete/:id", (req, res, next) => {
 
 // retrieves all Ids of Marcos in JSON Format
 router.get("/marcos/allCustomer/", (req, res, next) => {
-  MarcosCustomer.find({}, function(err, allCustomerData) {
+  MarcosCustomer.find({}, function (err, allCustomerData) {
     res.json({
-      allIds: { ...allCustomerData }
+      allIds: { ...allCustomerData },
     });
   });
 });
 
+// gets the Data from Zapier & Posts
+route.get("/get-zapier-data", (req, res, next) => {
+  console.log(req), "this is request data";
+});
 module.exports = router;
