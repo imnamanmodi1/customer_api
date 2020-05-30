@@ -304,7 +304,7 @@ router.get("/marcos/allCustomer/", (req, res, next) => {
 });
 
 // gets the Data from Zapier & Posts
-router.get("/get-zapier-data", (req, res, next) => {
+router.post("/get-zapier-data", (req, res, next) => {
   console.log(req), "this is request data";
 });
 module.exports = router;
